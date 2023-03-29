@@ -55,9 +55,9 @@ https://memory-share.onrender.com
 
 # ローカルでの動作方法
 
-% git clone https://github.com/annkw0713/memory_share.git
-% cd memory_share
-% bundle install
+% git clone https://github.com/annkw0713/memory_share.git  
+% cd memory_share  
+% bundle install  
 % yarn install
 
 # 工夫したポイント
