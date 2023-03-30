@@ -65,7 +65,7 @@ https://memory-share.onrender.com
 作成中
 
 ---
-以下、開発用の記述
+※以下、開発用の記述
 
 # テーブル設計
 
@@ -91,7 +91,7 @@ https://memory-share.onrender.com
 | person            | string     | null: false                    |
 | place             | string     | null: false                    |
 | description       | text       | null: false                    |
-| user_id           | references | null: false, foreign_key: true |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -103,8 +103,8 @@ https://memory-share.onrender.com
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | content   | string     | null: false                    |
-| user_id   | references | null: false, foreign_key: true |
-| memory_id | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| memory    | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -115,8 +115,8 @@ https://memory-share.onrender.com
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| following_id       | references | null: false, foreign_key: true |
-| follower_id        | references | null: false, foreign_key: true |
+| following          | references | null: false, foreign_key: true |
+| follower           | references | null: false, foreign_key: true |
 
 ### Association
 

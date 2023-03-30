@@ -8,18 +8,26 @@
     <header>
       <%= link_to image_tag("logo.png", width: 300, height: 300), root_path %>
       <nav>
-        <ul>
+        <div>
           <% if user_signed_in? %>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <%= link_to current_user.nickname, "#" %>
           <% else %>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <%= link_to "ログイン", new_user_session_path %><br>
+            <%= link_to "新規登録", new_user_registration_path %>
           <% end %>
-        </ul>
+        </div>
       </nav>
     </header>
     <main>
-      <!-- ここにコンテンツを追加 -->
+      <% if user_signed_in? %>
+        <li><%= link_to "新しく思い出を投稿する", new_memory_path %></li>
+        <li><%= link_to "これまでに投稿した思い出", "#" %></li>
+        <li><%= link_to "共有されている思い出", "#" %></li>
+        <li><%= link_to "フォロしているユーザー", "#" %></li>
+        <li><%= link_to "フォローされているユーザー", "#" %></li>
+        <li><%= link_to "プロフィールを編集", "#" %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <% end %>
     </main>
     <footer>
       <!-- ここにフッターを追加 -->
