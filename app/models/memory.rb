@@ -1,5 +1,6 @@
 class Memory < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
-  validates :title, :date, :person, :place, :description, presence: true
+  validates :title, :date, :person, :place, :description, :image, presence: true
 end
