@@ -35,8 +35,10 @@
 
   <div class="field">
     <div id="previews"></div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+    <div class="click-upload">
+      <%= form.label :images %>
+      <%= form.file_field :images, name: 'memory[images][]', data: {index: 0} %>
+    </div>
   </div>
 
   <div class="field">
