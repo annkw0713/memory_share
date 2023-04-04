@@ -1,6 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
+  // 新規投稿・編集ページのフォームを取得
+  const memoryForm = document.getElementById('new_memory');
+
   // プレビューを表示するためのスペースを取得
-  const previewList = document.querySelector('#previews');
+  const previewList = document.getElementById('previews');
+
+  // 新規投稿・編集ページのフォームがないならここで終了。「!」は論理否定演算子。
+  if (!memoryForm) return null;
 
   // 投稿できる枚数の制限を定義
   const imageLimits = 20;
@@ -17,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const previewImage = document.createElement('img');
     previewImage.setAttribute('class', 'preview-image');
     previewImage.setAttribute('src', blob);
-    previewImage.setAttribute('width', '200');
 
     // 削除ボタンを生成
     const deleteButton = document.createElement("div");
@@ -66,12 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   
   // input要素で値の変化が起きた際に呼び出される関数の中身
-  const changedFileField = (event) => {
+  const changedFileField = (e) => {
 
     // data-index（何番目を操作しているか）を取得
-    const dataIndex = event.target.getAttribute('data-index');
+    const dataIndex = e.target.getAttribute('data-index');
 
-    const file = event.target.files[0];
+    const file = e.target.files[0];
 
     // fileが空 = 何も選択しなかったのでプレビュー等を削除して終了する
     if (!file) {
