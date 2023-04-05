@@ -40,6 +40,11 @@
   </div>
 
   <div class='field'>
+    <%= form.label :動画 %>
+    <%= form.file_field :movie, :accept => 'movie/*' %>
+  </div>
+
+  <div class='field'>
     <%= form.label :内容 %>
     <%= form.text_area :description %>
   </div>
