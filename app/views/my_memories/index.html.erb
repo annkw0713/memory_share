@@ -1,0 +1,18 @@
+<% @memories.each do |memory| %>
+  <div>
+    <h2><%= memory.title %></h2>
+    <p><%= memory.date %></p>
+    <% memory.images[0..3].each do |image| %>
+      <div>
+        <%= image_tag image %>
+      </div>
+    <% end %>
+    <% if memory.movie? %>
+      <div>
+        <%= video_tag(memory.movie, loop: true, autoplay: true, muted: true, controls: true) %>
+      </div>
+    <% end %>
+    <p><%= memory.description %></p>
+    <p>Shared by <%= memory.user.nickname %></p>
+  </div>
+<% end %>
