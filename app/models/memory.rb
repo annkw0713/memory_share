@@ -6,9 +6,4 @@ class Memory < ApplicationRecord
   validates :images, length: { minimum: 1, maximum: 20, message: "は1枚以上20枚以下にしてください" }
 
   mount_uploader :movie, MovieUploader
-  
-  def movie_will_change!
-    super
-  end
-  
 end
