@@ -13,4 +13,6 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1',
       path_style: true
     }
+    config.fog_public = false
+    config.fog_attributes = { 'x-amz-acl' => 'private' }
 end
