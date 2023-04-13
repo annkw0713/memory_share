@@ -9,8 +9,6 @@ document.addEventListener('turbolinks:load', function() {
       if (this.files && this.files[0]) {
         const video = document.createElement('video');
         video.setAttribute('id', 'preview');
-        video.setAttribute('width', '200');
-        video.setAttribute('height', '200');
         video.setAttribute('controls', '');
         const src = URL.createObjectURL(this.files[0]);
         video.src = src;

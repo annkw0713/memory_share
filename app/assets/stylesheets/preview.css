@@ -18,3 +18,9 @@ img {
   width: 200px;
   object-fit: contain;
 }
+
+video {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}

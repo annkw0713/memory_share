@@ -5,31 +5,9 @@
     <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <header>
-      <nav>
-        <div>
-          <% if user_signed_in? %>
-            <%= link_to current_user.nickname, "#" %>
-          <% else %>
-            <%= link_to "ログイン", new_user_session_path %><br>
-            <%= link_to "新規登録", new_user_registration_path %>
-          <% end %>
-        </div>
-      </nav>
-    </header>
     <main>
-      <% if user_signed_in? %>
-        <li><%= link_to "新しく思い出を投稿する", new_memory_path %></li>
-        <li><%= link_to "これまでに投稿した思い出", "#" %></li>
-        <li><%= link_to "共有されている思い出", "#" %></li>
-        <li><%= link_to "フォロしているユーザー", "#" %></li>
-        <li><%= link_to "フォローされているユーザー", "#" %></li>
-        <li><%= link_to "プロフィールを編集", "#" %></li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <% end %>
     </main>
     <footer>
-      <!-- ここにフッターを追加 -->
     </footer>
   </body>
 </html>
