@@ -16,5 +16,5 @@
     <% end %>
     <p>DESCRIPTION:<%= truncate(memory.description, length: 30, omission: '...') %></p>
     <p>Shared by <%= link_to memory.user.nickname, "#" %></p>
-  </div>
+  </div><br>
 <% end %>

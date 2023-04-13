@@ -9,7 +9,7 @@
         <%= link_to "新規登録", new_user_registration_path %>
       <% end %>
     </div>
-  </nav>
+  </nav><br>
   <% if user_signed_in? %>
     <li><%= link_to "新しく思い出を投稿する", new_memory_path %></li>
     <li><%= link_to "これまでに投稿した思い出", my_memories_path %></li>
@@ -18,5 +18,5 @@
     <li><%= link_to "フォローされているユーザー", "#" %></li>
     <li><%= link_to "プロフィールを編集", "#" %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-  <% end %>
+  <% end %><br>
 </header>
