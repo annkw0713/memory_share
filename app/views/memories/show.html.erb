@@ -1,0 +1,25 @@
+<div class= "memory-show">
+  <%= link_to memory_path(@memory.id) do %>
+    <h2><%= @memory.title %></h2>
+  <% end %>
+  <p>DATE:<%= @memory.date %></p>
+  <p>PERSON:<%= @memory.person %></p>
+  <p>PLACE:<%= @memory.place %></p>
+  <% @memory.images[0..-1].each do |image| %>
+    <div>
+      <%= image_tag image %>
+    </div>
+  <% end %>
+  <% if @memory.movie? %>
+    <div>
+      <%= video_tag(@memory.movie, loop: true, autoplay: true, muted: true, controls: true) %>
+    </div>
+  <% end %>
+  <p>DESCRIPTION:<%= @memory.description %></p>
+  <p>Shared by <%= link_to @memory.user.nickname, "#" %></p>
+  <% if user_signed_in? && @memory.user_id == current_user.id %>
+    <%= link_to "思い出の編集", "#", method: :get %>
+    <p>or</p>
+    <%= link_to "削除", "#", method: :delete %>
+  <% end %>
+</div>

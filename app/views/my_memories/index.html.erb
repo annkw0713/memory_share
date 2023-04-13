@@ -1,7 +1,9 @@
 <% @memories.each do |memory| %>
   <div>
-    <h2><%= memory.title %></h2>
-    <p><%= memory.date %></p>
+    <%= link_to memory_path(memory.id) do %>
+      <h2><%= memory.title %></h2>
+    <% end %>
+    <p>DATE:<%= memory.date %></p>
     <% memory.images[0..3].each do |image| %>
       <div>
         <%= image_tag image %>
@@ -12,7 +14,7 @@
         <%= video_tag(memory.movie, loop: true, autoplay: true, muted: true, controls: true) %>
       </div>
     <% end %>
-    <p><%= memory.description %></p>
-    <p>Shared by <%= memory.user.nickname %></p>
+    <p>DESCRIPTION:<%= truncate(memory.description, length: 30, omission: '...') %></p>
+    <p>Shared by <%= link_to memory.user.nickname, "#" %></p>
   </div>
 <% end %>
