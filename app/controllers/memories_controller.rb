@@ -33,6 +33,12 @@ class MemoriesController < ApplicationController
     end
   end
 
+  def destroy
+    return unless @memory.destroy
+
+    redirect_to root_path
+  end
+
   private
 
   def set_memory

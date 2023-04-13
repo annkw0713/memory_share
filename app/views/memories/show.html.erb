@@ -20,6 +20,6 @@
   <% if user_signed_in? && @memory.user_id == current_user.id %>
     <%= link_to "思い出の編集", edit_memory_path(@memory.id), method: :get %>
     <p>or</p>
-    <%= link_to "削除", "#", method: :delete %>
+    <%= link_to "削除", memory_path(@memory.id), method: :delete %>
   <% end %>
 </div>
