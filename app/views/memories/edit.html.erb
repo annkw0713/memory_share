@@ -1,0 +1,57 @@
+<h1>思い出を編集する</h1>
+<%= form_with model: @memory, id: 'new_memory', local: true do |form| %>
+  <% if @memory.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@memory.errors.count, 'error') %>があります</h2>
+      <ul>
+        <% @memory.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= form.label :タイトル %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :日付 %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :人物 %>
+    <%= form.text_field :person %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :場所 %>
+    <%= form.text_field :place %>
+  </div>
+
+  <div class='field'>
+    <div id='previews'></div>
+    <div class='click-upload'>
+      <%= form.label :画像 %>
+      <%= form.file_field :images, name: 'memory[images][]', data: {index: 0} %>
+    </div>
+  </div>
+
+  <div class='field'>
+    <div id='previews-movie'></div>
+    <%= form.label :動画 %>
+    <%= form.file_field :movie, :accept => 'movie/*' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :内容 %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class='actions'>
+    <%= form.submit '編集する' %>
+    <%= link_to 'もどる', memory_path(@memory.id) %>
+  </div>
+<% end %>
