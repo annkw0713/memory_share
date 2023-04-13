@@ -7,6 +7,8 @@ class MemoriesController < ApplicationController
 
   def show
     @memory = Memory.find(params[:id])
+    @comment = Comment.new
+    @comments = @memory.comments.includes(:user)
   end
 
   def new

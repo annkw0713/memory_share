@@ -22,4 +22,23 @@
     <p>or</p>
     <%= link_to "削除", memory_path(@memory.id), method: :delete %>
   <% end %>
+  <div class="container"><br>
+    <%= form_with(model: [@memory, @comment], local: true) do |form| %>
+      <%= form.text_area :content, placeholder: "コメントする", rows: "2", required: true %><br>
+      <%= form.submit "送信" %>
+    <% end %><br>
+    <div class="comments">
+      <h3>＜コメント一覧＞</h3>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "#" %>：</strong>
+          <%= comment.content %>
+          (<%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>)
+          <% if user_signed_in? && comment.user_id == current_user.id %>
+            <%= link_to "削除", memory_comment_path(comment.memory_id, comment.id), method: :delete %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
