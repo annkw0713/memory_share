@@ -12,30 +12,30 @@
   <% end %>
 
   <div class='field'>
-    <%= form.label :タイトル %>
-    <%= form.text_field :title %>
+    <%= form.label :タイトル, class: 'required' %>
+    <%= form.text_field :title, required: true %>
   </div>
 
   <div class='field'>
-    <%= form.label :日付 %>
-    <%= form.date_select :date %>
+    <%= form.label :日付, class: 'required' %>
+    <%= form.date_select :date, required: true %>
   </div>
 
   <div class='field'>
-    <%= form.label :人物 %>
-    <%= form.text_field :person %>
+    <%= form.label :人物, class: 'required' %>
+    <%= form.text_field :person, required: true %>
   </div>
 
   <div class='field'>
-    <%= form.label :場所 %>
-    <%= form.text_field :place %>
+    <%= form.label :場所, class: 'required' %>
+    <%= form.text_field :place, required: true %>
   </div>
 
   <div class='field'>
     <div id='previews'></div>
     <div class='click-upload'>
-      <%= form.label :画像 %>
-      <%= form.file_field :images, name: 'memory[images][]', data: {index: 0} %>
+      <%= form.label :画像, class: 'required' %>
+      <%= form.file_field :images, name: 'memory[images][]', data: {index: 0}, required: true %>
     </div>
   </div>
 
@@ -46,8 +46,8 @@
   </div>
 
   <div class='field'>
-    <%= form.label :内容 %>
-    <%= form.text_area :description %>
+    <%= form.label :内容, class: 'required' %>
+    <%= form.text_area :description, required: true %>
   </div>
 
   <div class='actions'>

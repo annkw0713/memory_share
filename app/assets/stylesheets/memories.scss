@@ -2,3 +2,9 @@
   height: 500px;
   width: 500px;
 }
+
+.required::before {
+  content: "*";
+  color: red;
+  margin-right: 5px;
+}
