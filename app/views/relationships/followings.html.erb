@@ -1,0 +1,8 @@
+<h3>フォローしているユーザー</h3>
+<% if @following_users.any? %>
+  <% @following_users.each do |user| %>
+    <p><%= link_to user.nickname, user_path(user.id) %></p>
+  <% end %>
+<% else %>
+  <p>該当するユーザーはいません。</p>
+<% end %>

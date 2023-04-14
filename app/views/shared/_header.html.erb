@@ -3,7 +3,7 @@
   <nav>
     <div>
       <% if user_signed_in? %>
-        <%= link_to current_user.nickname, "#" %>
+        <%= current_user.nickname %>
       <% else %>
         <%= link_to "ログイン", new_user_session_path %><br>
         <%= link_to "新規登録", new_user_registration_path %>
@@ -11,12 +11,16 @@
     </div>
   </nav><br>
   <% if user_signed_in? %>
+    <%= form_with(url: users_path, method: :get, local: true) do |form| %>
+      <%= form.text_field :search, placeholder: "ユーザーを検索する" %>
+      <%= form.submit "検索" %>
+    <% end %><br>
     <li><%= link_to "新しく思い出を投稿する", new_memory_path %></li>
     <li><%= link_to "これまでに投稿した思い出", my_memories_path %></li>
     <li><%= link_to "共有されている思い出", "#" %></li>
-    <li><%= link_to "フォロしているユーザー", "#" %></li>
-    <li><%= link_to "フォローされているユーザー", "#" %></li>
-    <li><%= link_to "プロフィールを編集", "#" %></li>
+    <li><%= link_to "フォロしているユーザー", user_followings_path(current_user) %></li>
+    <li><%= link_to "フォローされているユーザー", user_followers_path(current_user) %></li>
+    <li><%= link_to "プロフィールを編集", edit_user_registration_path %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
   <% end %><br>
 </header>
