@@ -13,14 +13,21 @@ class MemoriesController < ApplicationController
 
   def new
     @memory = Memory.new
+    @following_users = current_user.followings
   end
 
   def create
     @memory = Memory.new(memory_params)
-    if @memory.save
-      redirect_to root_path
+    user = User.find_by(id: params[:memory][:user_id])
+    if user && (current_user.followings.include?(user) || current_user == user)
+      @memory.user = user
+      if @memory.save
+        redirect_to root_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_memory_path, alert: '正しいユーザーを選択してください。'
     end
   end
 

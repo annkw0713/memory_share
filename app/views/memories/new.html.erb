@@ -50,6 +50,16 @@
     <%= form.text_area :description, required: true %>
   </div>
 
+  <% if @following_users.present? %>
+    <div class='field'>
+      <%= form.label :共有するユーザー %>
+      <%= form.collection_select :user_id,  @following_users, :id, :nickname, { prompt: '選択してください' } %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+
+
   <div class='actions'>
     <%= form.submit '投稿する' %>
   </div>
