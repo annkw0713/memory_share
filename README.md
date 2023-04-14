@@ -82,6 +82,11 @@ https://memory-share.onrender.com
 - has_many :memories
 - has_many :comments
 
+- has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+- has_many :followings, through: :active_relationships, source: :follower
+- has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+- has_many :followers, through: :passive_relationships, source: :following
+
 ## memoriesテーブル
 
 | Column            | Type       | Options                        |
@@ -115,12 +120,10 @@ https://memory-share.onrender.com
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| following          | references | null: false, foreign_key: true |
-| follower           | references | null: false, foreign_key: true |
+| following          | references |            |
+| follower           | references |            |
 
 ### Association
 
-- has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
-- has_many :followings, through: :active_relationships, source: :follower
-- has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
-- has_many :followers, through: :passive_relationships, source: :following
+- belongs_to :following, class_name: "User"
+- belongs_to :follower, class_name: "User"
