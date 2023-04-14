@@ -16,7 +16,8 @@
     </div>
   <% end %>
   <p>DESCRIPTION:<%= @memory.description %></p>
-  <p>Shared by <%= link_to @memory.user.nickname, "#" %></p><br>
+  <% user = @memory.user %>
+  <p>Shared by <%= link_to user.nickname, user_path(user.id) %></p><br>
   <% if user_signed_in? && @memory.user_id == current_user.id %>
     <%= link_to "思い出の編集", edit_memory_path(@memory.id), method: :get %>
     <p>or</p>
